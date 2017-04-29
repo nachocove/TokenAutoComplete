@@ -392,7 +392,11 @@ public abstract class TokenCompleteTextView<T> extends MultiAutoCompleteTextView
     }
 
     protected float maxTextWidth() {
-        return getWidth() - getPaddingLeft() - getPaddingRight();
+        int width = getWidth();
+        if (width == 0){
+            width = getMeasuredWidth();
+        }
+        return width - getPaddingLeft() - getPaddingRight();
     }
 
     boolean inInvalidate = false;
